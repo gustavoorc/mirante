@@ -1,0 +1,13 @@
+<form>
+    <div>
+      <label>nome:</label>
+      <input type="text" name="nome"  [(ngModel)]="cliente.nome" />
+   </div>
+   <div>
+   <label>cpf:</label>
+   <input type="text" name="cpf"  [(ngModel)]="cliente.cpf" /> 
+   </div>
+   
+<button (click)="salvar()"></button>
+
+</form>

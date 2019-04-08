@@ -1,0 +1,17 @@
+<p-table [value]="cliente">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>nome</th>
+            <th>cpf</th>
+           
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-cliente>
+        <tr>
+            <td>{{cliente.nome}}</td>
+            <td>{{cliente.cpf}}</td>
+           
+        </tr>
+    </ng-template>
+</p-table>
+  <button routerLink="addCliente">Adicionar</button>
