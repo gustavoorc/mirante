@@ -13,7 +13,7 @@ public class Endereco {
 
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
-private Long idEmail;
+private Long idEndereco;
 
 @NotNull
 private String cep;
@@ -34,13 +34,13 @@ private String uf;
 private String complemento;
 
 
-public Long getIdEmail() {
-	return idEmail;
+public Long getIdEndereco() {
+	return idEndereco;
 }
 
 
-public void setIdEmail(Long idEmail) {
-	this.idEmail = idEmail;
+public void setIdEndereco(Long idEndereco) {
+	this.idEndereco = idEndereco;
 }
 
 

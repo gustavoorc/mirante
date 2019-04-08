@@ -8,12 +8,19 @@ import { ClienteService } from '../cliente.service';
   styleUrls: ['./cliente.component.css']
 })
 export class ClienteComponent implements OnInit {
-  public cliente:Cliente
+  public clientes:Cliente[]
 
   constructor(private clienteService: ClienteService) { }
 
   ngOnInit() {
-    this.cliente = this.clienteService.getCliente()
+    this.clienteService.getCliente().subscribe(
+      response => {
+         this.clientes = response 
+      },
+      error=> {
+        alert("erro ao carregar a lista de clientes")
+      }
+    )
   }
 
 }

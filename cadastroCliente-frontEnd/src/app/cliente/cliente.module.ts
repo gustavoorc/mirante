@@ -5,6 +5,11 @@ import { ClienteRoutingModule } from './cliente.routing.module';
 import { ClienteCadastroComponent } from './cadastro/cliente-cadastro.component';
 import { FormsModule} from '@angular/forms'
 import {TableModule} from 'primeng/table';
+import {InputTextModule} from 'primeng/inputtext';
+import {DropdownModule} from 'primeng/dropdown';
+import {FieldsetModule} from 'primeng/fieldset';
+import {ButtonModule} from 'primeng/button';
+
 
 @NgModule({
   declarations: [ClienteComponent, ClienteCadastroComponent],
@@ -12,7 +17,11 @@ import {TableModule} from 'primeng/table';
     CommonModule,
     ClienteRoutingModule,
     FormsModule,
-    TableModule
+    TableModule,
+    InputTextModule,
+    DropdownModule,
+    FieldsetModule,
+    ButtonModule
   ]
 })
 export class ClienteModule { }

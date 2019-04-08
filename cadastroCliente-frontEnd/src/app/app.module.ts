@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MenubarModule} from 'primeng/menubar';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 
@@ -17,9 +19,9 @@ import {MenubarModule} from 'primeng/menubar';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserModule,
     BrowserAnimationsModule,
-    MenubarModule
+    MenubarModule,
+    HttpClientModule
     
   ],
   providers: [],
