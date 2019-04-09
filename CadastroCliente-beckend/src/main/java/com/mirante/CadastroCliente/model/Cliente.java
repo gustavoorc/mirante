@@ -22,7 +22,6 @@ public class Cliente {
 
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
-@NotNull
 private Long idCliente;
 
 @NotNull
@@ -41,12 +40,12 @@ private Endereco endereco;
 @NotEmpty
 @OneToMany(cascade = CascadeType.ALL)
 @JoinColumn(name = "id_cliente")
-private List<Telefone> telefones;
+private List<Telefone> telefone;
 
 @NotEmpty
 @OneToMany(cascade = CascadeType.ALL)
 @JoinColumn(name = "id_cliente")
-private List<Email> emails;
+private List<Email> email;
 
 public Long getIdCliente() {
 	return idCliente;
@@ -81,19 +80,19 @@ public void setEndereco(Endereco endereco) {
 }
 
 public List<Telefone> getTelefones() {
-	return telefones;
+	return telefone;
 }
 
-public void setTelefones(List<Telefone> telefones) {
-	this.telefones = telefones;
+public void setTelefone(List<Telefone> telefones) {
+	this.telefone = telefones;
 }
 
 public List<Email> getEmails() {
-	return emails;
+	return email;
 }
 
-public void setEmails(List<Email> emails) {
-	this.emails = emails;
+public void setEmail(List<Email> emails) {
+	this.email = emails;
 }
 
 

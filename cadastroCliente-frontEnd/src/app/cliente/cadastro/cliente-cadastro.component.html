@@ -45,34 +45,42 @@
        <input type="text" pInputText placeholder="uf" [(ngModel)]="cliente.endereco.uf" name="uf">         
    </div>
   </div>
+
+
+  <div class="ui-g-12 ui-md-4">
+      <div class="ui-inputgroup">
+        <input type="text" pInputText placeholder="Complemento" [(ngModel)]="cliente.endereco.complemento" name="Complemento">         
+    </div>
+   </div>
 </div>
 
 <div class="ui-g-12 ui-md-6">
 <p-fieldset legend="Telefone" >
    <div>
       <div class="ui-g-12 ui-md-3">
-         <p-dropdown [options]="tipoTelefone" [(ngModel)]="telefones.tipoTelefone"></p-dropdown>     
+         <p-dropdown [options]="tipoTelefone" [(ngModel)]="telefones.tipoTelefone" (change)="setTipoTelefone()"></p-dropdown>     
        </div>
 
        <div class="ui-g-12 ui-md-3">
          <div class="ui-inputgroup">
-             <input type="text" pInputText placeholder="telefone" [(ngModel)]="telefones.numero" name="numero">         
+             <p-inputMask  type="text" placeholder="telefone" [(ngModel)]="telefones.numero" mask="9999-9999" name="numero"></p-inputMask>       
          </div>
      </div>
 
      <div class="ui-g-12 ui-md-3">
       <div class="ui-inputgroup">
-         <button (click)="montaTelefones()" pButton type="button" label="+" ></button>
+         <button (click)="montaTelefones()" pButton type="button" icon="pi pi-plus"></button>
       </div>
       </div>
    </div>
 
 <div class="ui-g-12 ui-md-6">
-      <p-table [value]="cliente.telefone">
+      <p-table [value]="cliente.telefone" *ngIf="cliente.telefone.length > 0">
          <ng-template pTemplate="header">
              <tr>
                  <th>Tipo</th>
                  <th>Telefone</th>
+                 <th>Excluir</th>
                 
              </tr>
          </ng-template>
@@ -80,6 +88,7 @@
              <tr>
                  <td>{{telefone.tipoTelefone}}</td>
                  <td>{{telefone.numero}}</td>
+                 <td><button   (click)="removerTelefone(telefone)" pButton type="button" class="ui-button-danger" icon="pi pi-times-circle" ></button></td>
                 
              </tr>
          </ng-template>
@@ -91,3 +100,49 @@
    
 </p-fieldset>
 </div>
+
+
+
+
+<div class="ui-g-12 ui-md-6">
+      <p-fieldset legend="Email" >
+         <div>
+             <div class="ui-inputgroup ui-g-12 ui-md-5" >
+                   <input class="ui-g-12 ui-md-12" type="email" pInputEmail placeholder="Email" [(ngModel)]="emails.email" name="email" email="true">         
+           </div>
+      
+           <div class="ui-g-12 ui-md-3">
+            <div class="ui-inputgroup">
+               <button (click)="montaEmail()" pButton type="button" icon="pi pi-plus"></button>
+            </div>
+            </div>
+         </div>
+      
+      <div class="ui-g-12 ui-md-6">
+            <p-table [value]="cliente.email" *ngIf="cliente.email.length > 0">
+               <ng-template pTemplate="header">
+                   <tr>
+                       <th>Email</th>
+                       <th>Excluir</th> 
+                   </tr>
+               </ng-template>
+               <ng-template pTemplate="body" let-email>
+                   <tr>
+                       <td>{{email.email}}</td>
+                       <td><button   (click)="removerEmail(email)" pButton type="button" class="ui-button-danger" icon="pi pi-times-circle" ></button></td>
+                      
+                   </tr>
+               </ng-template>
+           </p-table>
+      </div>      
+         
+            
+      
+         
+      </p-fieldset>
+      </div>
+
+   <div>
+      <button (click)="salvar()" pButton type="button" label="salvar"></button>
+      <button routerLink="/cliente" pButton type="button" class="ui-button-danger"  label="cancelar"></button>
+   </div>

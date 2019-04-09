@@ -15,6 +15,7 @@ export class Cliente {
         this.nome = ""
         this.cpf  = " "
         this.telefone = []
+        this.email = []
         
     }
 }

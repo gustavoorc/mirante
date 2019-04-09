@@ -5,6 +5,9 @@ import { EnderecoService } from 'src/app/endereco.service';
 import { Endereco } from 'src/app/endereco';
 import {SelectItem} from 'primeng/api';
 import { Telefone } from 'src/app/telefone';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { Email } from 'src/app/email';
+import { Router } from '@angular/router';
 
 
 
@@ -17,10 +20,11 @@ export class ClienteCadastroComponent implements OnInit {
  
   public cliente:Cliente = new Cliente()
   public telefones:Telefone  = new Telefone()
+  public emails:Email = new Email()
 
   tipoTelefone: SelectItem[];
 
-  constructor(private clienteService:ClienteService, private enderecoService: EnderecoService) {
+  constructor(private clienteService:ClienteService, private enderecoService: EnderecoService, private route:Router) {
     
   }
 
@@ -35,8 +39,12 @@ export class ClienteCadastroComponent implements OnInit {
 
   public salvar(){
     this.clienteService.salvar(this.cliente).subscribe(
+      
       responde => {
         alert("salvo com sucesso !")
+        this.route.navigate(
+          ["/cliente"]
+        )
       },
       erro => {
         alert("aconteceu algo inesperado, contato o administrador")
@@ -59,11 +67,21 @@ export class ClienteCadastroComponent implements OnInit {
 
   public montaTelefones(){
     this.cliente.telefone.push(this.telefones);
-    console.log(this.telefones)
+    this.telefones = new Telefone()
   }
 
-  public setTipoTelefone(){
-    console.log(this.telefones)
+  public removerTelefone(obj: Telefone){
+    let idx = this.cliente.telefone.indexOf(obj);
+    this.cliente.telefone.splice(idx,1)
   }
 
+  public montaEmail(){
+    this.cliente.email.push(this.emails);
+    this.emails = new Email()
+  }
+
+  public removerEmail(obj: Email){
+    let idx = this.cliente.email.indexOf(obj)
+    this.cliente.email.splice(idx, 1)
+  }
 }

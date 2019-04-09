@@ -38,7 +38,7 @@ public class ClienteResource {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Cliente> salvar(@RequestBody Cliente cliente ){
+	public ResponseEntity<Cliente> salvar(@RequestBody Cliente cliente){
 		Cliente salvaCliente = clienteService.salvar(cliente);
 		
 		return ResponseEntity.status(HttpStatus.CREATED).body(salvaCliente);
