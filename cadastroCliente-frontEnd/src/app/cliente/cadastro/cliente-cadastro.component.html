@@ -1,55 +1,116 @@
+<p-fieldset legend="Cadastro Cliente" >
+
+<form [formGroup]="formCadastro" autocomplete="off">
+
+   
+
 <div class="ui-g ui-fluid">
    <div class="ui-g-12 ui-md-6">
        <div class="ui-inputgroup">
-           <input type="text" pInputText placeholder="Nome" [(ngModel)]="cliente.nome" name="nome">         
+           <input type="text" pInputText placeholder="Nome" [(ngModel)]="cliente.nome" name="nome" formControlName="nome" required maxlength="100" minlength="3">         
        </div>
+       <div *ngIf="nome.invalid && (nome.dirty || nome.touched)"
+             class="alert alert-danger">
+
+  <div *ngIf="nome.errors.required" class="ui-g-12 ui-md-3">
+   <p-message severity="error" text="Nome Obrigatorio!"></p-message>
+  </div>
+  <div *ngIf="nome.errors.minlength " class="ui-g-12 ui-md-6">
+      <p-message severity="error" text="O nome deve conter no mínimo 3 caracteres"></p-message>
+  </div>
+  <div *ngIf="nome.errors.miaxlength">
+      <p-message severity="error" text="O nome deve conter no maximo 100 caracteres"></p-message>
+  </div>
+</div>
    </div>
+
+
 
    <div class="ui-g-12 ui-md-4">
       <div class="ui-inputgroup">
-          <input type="text" pInputText placeholder="cpf" [(ngModel)]="cliente.cpf" name="cpf">         
+          <input type="text"  pInputText  placeholder="cpf" [(ngModel)]="cliente.cpf" name="cpf" formControlName="cpf" required>         
       </div>
-  </div>
+      <div *ngIf="cpf.invalid && (cpf.dirty || cpf.touched)" class="alert alert-danger">
+
+         <div *ngIf="cpf.errors.required" class="ui-g-12 ui-md-3">
+            <p-message severity="error" text="Cpf Obrigatorio!"></p-message>
+         </div>
+      </div>
    
 </div>
-
-<div class="ui-g ui-fluid">
-   <div class="ui-g-12 ui-md-2">
-       <div class="ui-inputgroup">
-           <input (focusout)="retornaEndereco()" type="text" pInputText placeholder="Cep" [(ngModel)]="cliente.endereco.cep" name="cep">         
-       </div>
-   </div>
 </div>
 
 <div class="ui-g ui-fluid">
    <div class="ui-g-12 ui-md-4">
        <div class="ui-inputgroup">
-           <input type="text" pInputText placeholder="Logradouro" [(ngModel)]="cliente.endereco.logradouro" name="logradouro">         
+           <input (focusout)="retornaEndereco()" type="text" pInputText placeholder="Cep" [(ngModel)]="cliente.endereco.cep" name="cep" formControlName="cep" required>          
        </div>
+       <div *ngIf="cep.invalid && (cep.dirty || cep.touched)" class="alert alert-danger">
+
+            <div *ngIf="cep.errors.required" class="ui-g-12 ui-md-5">
+               <p-message severity="error" text="Cep Obrigatorio!"></p-message>
+            </div>
+         </div>
    </div>
+
+   <div class="ui-g-12 ui-md-6">
+         <div class="ui-inputgroup">
+             <input type="text" pInputText placeholder="Logradouro" [(ngModel)]="cliente.endereco.logradouro" name="logradouro" formControlName="logradouro" required>         
+         </div>
+         <div *ngIf="logradouro.invalid && (logradouro.dirty || logradouro.touched)" class="alert alert-danger">
+
+               <div *ngIf="logradouro.errors.required" class="ui-g-12 ui-md-5">
+                  <p-message severity="error" text="logradouro Obrigatorio!"></p-message>
+               </div>
+            </div>
+     </div>
+
+</div>
+
+<div class="ui-g ui-fluid">
+   
 
    <div class="ui-g-12 ui-md-3">
       <div class="ui-inputgroup">
-          <input type="text" pInputText placeholder="bairro" [(ngModel)]="cliente.endereco.bairro" name="bairro">         
+          <input type="text" pInputText placeholder="bairro" [(ngModel)]="cliente.endereco.bairro" name="bairro" formControlName="bairro" required>         
       </div>
+      <div *ngIf="bairro.invalid && (bairro.dirty || bairro.touched)" class="alert alert-danger">
+
+            <div *ngIf="bairro.errors.required" class="ui-g-12 ui-md-5">
+               <p-message severity="error" text="bairro Obrigatorio!"></p-message>
+            </div>
+         </div>
   </div>
 
   <div class="ui-g-12 ui-md-3">
    <div class="ui-inputgroup">
-       <input type="text" pInputText placeholder="cidade" [(ngModel)]="cliente.endereco.cidade" name="cidade">         
+       <input type="text" pInputText placeholder="cidade" [(ngModel)]="cliente.endereco.cidade" name="cidade" formControlName="cidade" required>         
    </div>
+   <div *ngIf="cidade.invalid && (cidade.dirty || cidade.touched)" class="alert alert-danger">
+
+         <div *ngIf="cidade.errors.required" class="ui-g-12 ui-md-10">
+            <p-message severity="error" text="cidade Obrigatorio!"></p-message>
+         </div>
+      </div>
+
    </div>
 
    <div class="ui-g-12 ui-md-1">
      <div class="ui-inputgroup">
-       <input type="text" pInputText placeholder="uf" [(ngModel)]="cliente.endereco.uf" name="uf">         
+       <input type="text" pInputText placeholder="uf" [(ngModel)]="cliente.endereco.uf" name="uf" formControlName="uf" required>         
    </div>
+   <div *ngIf="uf.invalid && (uf.dirty || uf.touched)" class="alert alert-danger">
+
+         <div *ngIf="uf.errors.required" class="ui-g-12 ui-md-12">
+            <p-message severity="error" text="uf Obrigatorio!"></p-message>
+         </div>
+      </div>
   </div>
 
 
-  <div class="ui-g-12 ui-md-4">
+  <div class="ui-g-12 ui-md-3">
       <div class="ui-inputgroup">
-        <input type="text" pInputText placeholder="Complemento" [(ngModel)]="cliente.endereco.complemento" name="Complemento">         
+        <input type="text" pInputText placeholder="Complemento" [(ngModel)]="cliente.endereco.complemento" name="Complemento" formControlName="complemento" required>         
     </div>
    </div>
 </div>
@@ -58,12 +119,12 @@
 <p-fieldset legend="Telefone" >
    <div>
       <div class="ui-g-12 ui-md-3">
-         <p-dropdown [options]="tipoTelefone" [(ngModel)]="telefones.tipoTelefone" (change)="setTipoTelefone()"></p-dropdown>     
+         <p-dropdown [options]="tipoTelefone" [(ngModel)]="telefones.tipoTelefone"  formControlName="tipoTel"></p-dropdown>     
        </div>
 
        <div class="ui-g-12 ui-md-3">
          <div class="ui-inputgroup">
-             <p-inputMask  type="text" placeholder="telefone" [(ngModel)]="telefones.numero" mask="9999-9999" name="numero"></p-inputMask>       
+             <p-inputMask  type="text" placeholder="telefone" [(ngModel)]="telefones.numero" mask="9999-9999" name="numero" formControlName="numero" required></p-inputMask>       
          </div>
      </div>
 
@@ -108,7 +169,7 @@
       <p-fieldset legend="Email" >
          <div>
              <div class="ui-inputgroup ui-g-12 ui-md-5" >
-                   <input class="ui-g-12 ui-md-12" type="email" pInputEmail placeholder="Email" [(ngModel)]="emails.email" name="email" email="true">         
+                   <input class="ui-g-12 ui-md-12" type="email" pInputEmail placeholder="Email" [(ngModel)]="emails.email" name="email" email="true" formControlName="email" required  >         
            </div>
       
            <div class="ui-g-12 ui-md-3">
@@ -141,7 +202,10 @@
          
       </p-fieldset>
       </div>
-
+      
+     
+</form>
+</p-fieldset>
    <div>
       <button (click)="salvar()" pButton type="button" label="salvar"></button>
       <button routerLink="/cliente" pButton type="button" class="ui-button-danger"  label="cancelar"></button>

@@ -10,6 +10,10 @@ import {DropdownModule} from 'primeng/dropdown';
 import {FieldsetModule} from 'primeng/fieldset';
 import {ButtonModule} from 'primeng/button';
 import {InputMaskModule} from 'primeng/inputmask';
+import {ReactiveFormsModule } from "@angular/forms"
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+
 
 
 @NgModule({
@@ -23,7 +27,12 @@ import {InputMaskModule} from 'primeng/inputmask';
     DropdownModule,
     FieldsetModule,
     ButtonModule,
-    InputMaskModule
+    InputMaskModule,
+    ReactiveFormsModule,
+    MessagesModule,
+    MessageModule
+ 
+
   ]
 })
 export class ClienteModule { }

@@ -8,6 +8,8 @@ import { Telefone } from 'src/app/telefone';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Email } from 'src/app/email';
 import { Router } from '@angular/router';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+
 
 
 
@@ -18,13 +20,15 @@ import { Router } from '@angular/router';
 })
 export class ClienteCadastroComponent implements OnInit {
  
+  formCadastro: FormGroup;
+
   public cliente:Cliente = new Cliente()
   public telefones:Telefone  = new Telefone()
   public emails:Email = new Email()
 
   tipoTelefone: SelectItem[];
 
-  constructor(private clienteService:ClienteService, private enderecoService: EnderecoService, private route:Router) {
+  constructor(private clienteService:ClienteService, private enderecoService: EnderecoService, private route:Router, private fb: FormBuilder,) {
     
   }
 
@@ -35,7 +39,39 @@ export class ClienteCadastroComponent implements OnInit {
       {label:'Residencial', value:'Residencial'},
       {label:'Comercial', value: 'Comercial'},
   ];
+
+    this.criaFormulario();
   }
+
+
+  criaFormulario(){
+    this.formCadastro = this.fb.group({
+      cpf: ['', Validators.compose([Validators.required])],
+      nome: ['', Validators.compose([Validators.required, Validators.maxLength(100), Validators.minLength(3)])],
+      cep: ['', Validators.compose([Validators.required])],
+      logradouro: ['', Validators.compose([Validators.required])],
+      bairro: ['', Validators.required],
+      cidade: ['', Validators.compose([Validators.required])],
+      uf: ['', Validators.compose([Validators.required])],
+      complemento: [''],
+      numero: ['', Validators.compose([Validators.required])],
+      tipoTel: ['', Validators.compose([Validators.required])],
+      email: ['', Validators.compose([Validators.required])]
+    });
+  }
+
+  get nome() { return this.formCadastro.get('nome'); }
+  get cpf() { return this.formCadastro.get('cpf'); }
+  get cep() { return this.formCadastro.get('cep'); }
+  get logradouro() { return this.formCadastro.get('logradouro'); }
+  get bairro() { return this.formCadastro.get('bairro'); }
+  get cidade() { return this.formCadastro.get('cidade'); }
+  get uf() { return this.formCadastro.get('uf'); }
+  get complemento() { return this.formCadastro.get('complemento'); }
+  get numero() { return this.formCadastro.get('numero'); }
+  get tipoTel() { return this.formCadastro.get('tipoTel'); }
+  get email() { return this.formCadastro.get('email'); }
+
 
   public salvar(){
     this.clienteService.salvar(this.cliente).subscribe(
