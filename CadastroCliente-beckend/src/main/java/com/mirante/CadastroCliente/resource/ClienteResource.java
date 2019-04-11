@@ -44,7 +44,7 @@ public class ClienteResource {
 		return ResponseEntity.status(HttpStatus.CREATED).body(salvaCliente);
 	}
 	
-	@DeleteMapping
+	@DeleteMapping("/{idCliente}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deletar (@PathVariable Long idCliente) {
 		clienteService.deletar(idCliente);

@@ -28,7 +28,7 @@
 
    <div class="ui-g-12 ui-md-4">
       <div class="ui-inputgroup">
-          <input type="text"  pInputText  placeholder="cpf" [(ngModel)]="cliente.cpf" name="cpf" formControlName="cpf" required>         
+          <p-inputMask  type="text" placeholder="Cpf" [(ngModel)]="cliente.cpf" mask="999.999.999-99" name="cpf" formControlName="cpf" required></p-inputMask>           
       </div>
       <div *ngIf="cpf.invalid && (cpf.dirty || cpf.touched)" class="alert alert-danger">
 
@@ -43,7 +43,7 @@
 <div class="ui-g ui-fluid">
    <div class="ui-g-12 ui-md-4">
        <div class="ui-inputgroup">
-           <input (focusout)="retornaEndereco()" type="text" pInputText placeholder="Cep" [(ngModel)]="cliente.endereco.cep" name="cep" formControlName="cep" required>          
+           <p-inputMask  (focusout)="retornaEndereco()" type="text" placeholder="Cep" [(ngModel)]="cliente.endereco.cep" mask="99999-999" name="cep" formControlName="cep" required></p-inputMask>                     
        </div>
        <div *ngIf="cep.invalid && (cep.dirty || cep.touched)" class="alert alert-danger">
 
@@ -110,7 +110,7 @@
 
   <div class="ui-g-12 ui-md-3">
       <div class="ui-inputgroup">
-        <input type="text" pInputText placeholder="Complemento" [(ngModel)]="cliente.endereco.complemento" name="Complemento" formControlName="complemento" required>         
+        <input type="text" pInputText placeholder="Complemento" [(ngModel)]="cliente.endereco.complemento" name="Complemento" formControlName="complemento">         
     </div>
    </div>
 </div>
@@ -124,7 +124,7 @@
 
        <div class="ui-g-12 ui-md-3">
          <div class="ui-inputgroup">
-             <p-inputMask  type="text" placeholder="telefone" [(ngModel)]="telefones.numero" mask="9999-9999" name="numero" formControlName="numero" required></p-inputMask>       
+             <p-inputMask  type="text" placeholder="telefone" [(ngModel)]="telefones.numero" mask="9999-9999" name="numero" formControlName="numero" ></p-inputMask>       
          </div>
      </div>
 
@@ -168,7 +168,7 @@
 <div class="ui-g-12 ui-md-6">
       <p-fieldset legend="Email" >
          <div>
-             <div class="ui-inputgroup ui-g-12 ui-md-5" >
+             <div class="ui-inputgroup ui-g-12 ui-md-6" >
                    <input class="ui-g-12 ui-md-12" type="email" pInputEmail placeholder="Email" [(ngModel)]="emails.email" name="email" email="true" formControlName="email" required  >         
            </div>
       
@@ -183,14 +183,14 @@
             <p-table [value]="cliente.email" *ngIf="cliente.email.length > 0">
                <ng-template pTemplate="header">
                    <tr>
-                       <th>Email</th>
+                       <th style="widht:70%">Email</th>
                        <th>Excluir</th> 
                    </tr>
                </ng-template>
                <ng-template pTemplate="body" let-email>
                    <tr>
                        <td>{{email.email}}</td>
-                       <td><button   (click)="removerEmail(email)" pButton type="button" class="ui-button-danger" icon="pi pi-times-circle" ></button></td>
+                       <td><button   [disabled]="!formCadastro.valid" (click)="removerEmail(email)" pButton type="button" class="ui-button-danger" icon="pi pi-times-circle" ></button></td>
                       
                    </tr>
                </ng-template>

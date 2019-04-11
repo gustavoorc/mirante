@@ -3,15 +3,28 @@
         <tr>
             <th>nome</th>
             <th>cpf</th>
+            <th style="width:10%;">ações</th>
            
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-cliente>
         <tr>
             <td>{{cliente.nome}}</td>
-            <td>{{cliente.cpf}}</td>
+            <td>{{cliente.cpf}}</td>    
+            <td >
+                <button  (click)="retornaCliente(cliente)"pButton type="button" class="ui-button-primary" icon="pi pi-pencil" ></button>
+                <button  (click)="deletar(cliente.idCliente)" pButton type="button" class="ui-button-danger" icon="pi pi-times-circle" ></button>
+            </td>
            
         </tr>
     </ng-template>
 </p-table>
   <button routerLink="addCliente" pButton type="button" label="Adicionar"></button>
+
+  <p-confirmDialog #cd header="Atenção !" icon="pi pi-exclamation-triangle">
+        <p-footer>
+                <button type="button" pButton icon="pi pi-check" label="Sim" (click)="cd.accept()"></button>
+                <button type="button" pButton icon="pi pi-times" label="Não" (click)="cd.reject()"></button>
+            </p-footer>
+
+  </p-confirmDialog>

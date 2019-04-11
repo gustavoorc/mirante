@@ -13,10 +13,15 @@ export class ClienteService {
     private url = "http://localhost:8080/clientes"
 
     public salvar(cliente:Cliente):Observable<Cliente>{
-      console.log(cliente)
       return this.http.post<Cliente>(this.url, cliente)
   }
   public getCliente(): Observable<Cliente[]>{
        return this.http.get<Cliente[]>(this.url)
   }
+
+  public deletar(idCliente:String):Observable<any>{
+    return this.http.delete(this.url  + "/" + idCliente)
+  }
+
+ 
 }

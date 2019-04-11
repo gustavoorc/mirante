@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Cliente } from '../../cliente';
 import { ClienteService } from 'src/app/cliente.service';
 import { EnderecoService } from 'src/app/endereco.service';
@@ -26,6 +26,8 @@ export class ClienteCadastroComponent implements OnInit {
   public telefones:Telefone  = new Telefone()
   public emails:Email = new Email()
 
+  
+
   tipoTelefone: SelectItem[];
 
   constructor(private clienteService:ClienteService, private enderecoService: EnderecoService, private route:Router, private fb: FormBuilder,) {
@@ -41,6 +43,7 @@ export class ClienteCadastroComponent implements OnInit {
   ];
 
     this.criaFormulario();
+    console.log(this.recebeCliente)
   }
 
 

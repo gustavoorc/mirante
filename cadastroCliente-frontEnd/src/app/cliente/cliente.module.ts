@@ -13,6 +13,8 @@ import {InputMaskModule} from 'primeng/inputmask';
 import {ReactiveFormsModule } from "@angular/forms"
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+
 
 
 
@@ -30,7 +32,9 @@ import {MessageModule} from 'primeng/message';
     InputMaskModule,
     ReactiveFormsModule,
     MessagesModule,
-    MessageModule
+    MessageModule,
+    ConfirmDialogModule
+  
  
 
   ]
